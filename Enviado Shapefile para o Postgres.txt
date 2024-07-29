@@ -1,5 +1,5 @@
-
- Enviando Shapefile para Postgres:
+ 
+ Enviando Raster para Postgres:
 
  Parte Power Shell:
 
@@ -21,27 +21,17 @@
     - 6º Veja se foi realizado o upload do arquivo para o servidor:
 	     Digite: ls
 	  
-	- 7º Remova o zip do seu arquivo:
+	- 7º Remova o zip do seu arquivo:cd 
 	     Digite: unzip (seu arquivo).zip
 
-	- 8º Envie seu shapefile já sem o zip para o banco Postgres:
-	     Digite: shp2pgsql -s 4326 -I -g geom (seu arquivo).shp geo.(seu arquivo)|PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation
-		 Observação: convertendo para latini
-		 Digite: shp2pgsql -s 4326 -I -g geom -W "LATIN1" geo_pol_areas_quilombolas.shp geo.geo_pol_areas_quilombolas | PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation
-
- Parte Geoserver:
-
-   - 9º No Geoserver:
-        https://geoserver.iocasta.com.br/geoserver/web/?0
-        Na guia dados, acesse camadas
-		
-  - 10º Em Camadas:
-        Adiocione uma nova camada, escolha oficial:postgis e publique a camada
-		
-
-		
-	
-		
-		
-		
-		
+	- 8º Envie seu raster já sem o zip para o banco Postgres:
+	     Parte 01: raster2pgsql -s 4326 -I -C -M -F -t 100x100 teste.tif geo.teste > raster_import.sql 
+		 Parte 02: PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation -f raster_import.sql
+		  
+		 Atenção: Quando importar um segundo raster para uma tabela já populada, remova o -C e insira o "-a"  
+		 
+		 raster2pgsql -s 4326 -I -M -F -t 30x30 brasil_coverage_2020.tif geo.raster > brasil_coverage_2020.sql
+		 PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation -f brasil_coverage_2020.sql
+		 
+		 raster2pgsql -s 4326 -I -M -F -t 30x30 -a brasil_coverage_2021.tif geo.raster > brasil_coverage_2021.sql
+		 PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation -f brasil_coverage_2021.sql
