@@ -1,0 +1,47 @@
+
+ Enviando Shapefile para Postgres:
+
+ Parte Power Shell:
+
+	- 1º Acesse o Power Shell no seu computador:
+         Digite: "Power shell" em pesquisar
+
+    - 2º No Power Shell, vá até o diretorio onde está localizado (seu arquivo).zip:
+         Exemplo: "C:\Users\RibeiroF> cd C:\Temp"
+
+    - 3º Acesse o servidor Vênus:
+	     Digite: sftp fribeiro@venus.iocasta.com.br
+
+    - 4º Suba o arquivo zip para o servidor:
+         Digite: put(seu arquivo).zip 
+
+    - 5º Acesse o servidor pelo Power Shell:
+         Digite: ssh fribeiro@209.126.127.15
+	 
+    - 6º Veja se foi realizado o upload do arquivo para o servidor:
+	     Digite: ls
+	  
+	- 7º Remova o zip do seu arquivo:
+	     Digite: unzip (seu arquivo).zip
+
+	- 8º Envie seu shapefile já sem o zip para o banco Postgres:
+	     Digite: shp2pgsql -s 4326 -I -g geom (seu arquivo).shp geo.(seu arquivo)|PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation
+		 Observação: convertendo para latini
+		 Digite: shp2pgsql -s 4326 -I -g geom -W "LATIN1" geo_pol_areas_quilombolas.shp geo.geo_pol_areas_quilombolas | PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation
+
+ Parte Geoserver:
+
+   - 9º No Geoserver:
+        https://geoserver.iocasta.com.br/geoserver/web/?0
+        Na guia dados, acesse camadas
+		
+  - 10º Em Camadas:
+        Adiocione uma nova camada, escolha oficial:postgis e publique a camada
+		
+
+		
+	
+		
+		
+		
+		
