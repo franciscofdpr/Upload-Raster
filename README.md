@@ -27,7 +27,7 @@
 - Use o comando SFTP para acessar o servidor:
 
   ```powershell
-  sftp fribeiro@venus.iocasta.com.br
+  sftp fribeiro@...
   ```
 
 ### 4. Faça o Upload do Arquivo ZIP
@@ -77,7 +77,7 @@
 - Use o comando `psql` para importar o arquivo SQL:
 
   ```bash
-  PGPASSWORD=... psql -h ... -p ... -U ... -d dblocation -f raster_import.sql
+  PGPASSWORD=... psql -h ... -p ... -U ... -d ... -f raster_import.sql
   ```
 
 ### Observações Importantes
@@ -86,7 +86,7 @@
 
   ```bash
   raster2pgsql -s 4326 -I -M -F -t 30x30 -a brasil_coverage_2020.tif geo.raster > brasil_coverage_2020.sql
-  PGPASSWORD=... psql -h ... -p 25432 -U ... -d ... -f brasil_coverage_2020.sql
+  PGPASSWORD=... psql -h ... -p ... -U ... -d ... -f brasil_coverage_2020.sql
   ```
 
   ```bash
