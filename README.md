@@ -43,7 +43,7 @@
 - Depois de fazer o upload, acesse o servidor via SSH:
 
   ```powershell
-  ssh fribeiro@209.126.127.15
+  ssh fribeiro@...
   ```
 
 ### 6. Verifique o Upload do Arquivo
@@ -77,7 +77,7 @@
 - Use o comando `psql` para importar o arquivo SQL:
 
   ```bash
-  PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation -f raster_import.sql
+  PGPASSWORD=... psql -h ... -p ... -U ... -d dblocation -f raster_import.sql
   ```
 
 ### Observações Importantes
@@ -86,7 +86,7 @@
 
   ```bash
   raster2pgsql -s 4326 -I -M -F -t 30x30 -a brasil_coverage_2020.tif geo.raster > brasil_coverage_2020.sql
-  PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation -f brasil_coverage_2020.sql
+  PGPASSWORD=... psql -h ... -p 25432 -U ... -d ... -f brasil_coverage_2020.sql
   ```
 
   ```bash
