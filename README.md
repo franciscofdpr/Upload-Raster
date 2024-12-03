@@ -91,5 +91,5 @@
 
   ```bash
   raster2pgsql -s 4326 -I -M -F -t 30x30 -a brasil_coverage_2021.tif geo.raster > brasil_coverage_2021.sql
-  PGPASSWORD=yhwnaZ69mhpeDri psql -h postgres.iocasta.com.br -p 25432 -U postgres -d dblocation -f brasil_coverage_2021.sql
+  PGPASSWORD=... psql -h ... -p ... -U ... -d ... -f brasil_coverage_2021.sql
   ```
